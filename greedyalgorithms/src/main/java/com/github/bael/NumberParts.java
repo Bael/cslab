@@ -2,6 +2,11 @@ package com.github.bael;
 
 import java.util.*;
 
+/**
+ * Задача разбить входное число на разные натуральные числа - слагаемые,
+ * сумма которых равна поданному числу.
+ * вернуть максимальное число и массив слагаемых
+ * */
 public class NumberParts {
 
     public static void main(String[] args) {
@@ -9,12 +14,6 @@ public class NumberParts {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-//        for (int i =0; i< 15; i++) {
-//            System.out.print("sum for i " + i + " = " +max(i).stream().mapToInt(value -> value).sum());
-//            System.out.print(" with array");
-//            System.out.println(max(i));
-//
-//        }
         List<Integer> list = max(n);
         System.out.println(list.size());
         list.forEach(integer -> System.out.printf("%d ", integer));
