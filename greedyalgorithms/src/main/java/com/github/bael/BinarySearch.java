@@ -1,11 +1,28 @@
 package com.github.bael;
 
 import java.util.Arrays;
+import java.util.BitSet;
 import java.util.Scanner;
 
 public class BinarySearch {
     public static void main(String[] args) {
-        new BinarySearch().run();
+//        new BinarySearch().run();
+        Integer flag = 256;
+        System.out.println(Integer.toBinaryString(flag));
+        int count = 0;
+
+        for (int i=0; i< 256; i++) {
+            for (int j=0; j < 256; j++) {
+                if (((i + j) & flag) != 0) {
+                    count++;
+                    System.out.println(Integer.toBinaryString(i));
+                    System.out.println(Integer.toBinaryString(j));
+                    System.out.println();
+
+                }
+            }
+        }
+        System.out.printf("count is %s from total %s", count, 256*256);
     }
 
     private void run() {
