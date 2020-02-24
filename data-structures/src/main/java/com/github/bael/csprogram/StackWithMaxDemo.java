@@ -32,55 +32,13 @@ public class StackWithMaxDemo {
         System.out.println(builder.toString());
     }
 
-//    private static class HardStack {
-//        private int[] stackArray;
-//        private int head = 0;
-//        private int head() {
-//            return head;
-//        }
-
-//        public HardStack(int capacity) {
-//            stackArray = new int[capacity + 1];
-//            stackArray[0] = Integer.MIN_VALUE;
-//        }
-//
-//        public boolean isEmpty() {
-//            return head == 0;
-//        }
-//        public int pop() {
-//            if (!isEmpty()) {
-//                head--;
-//                return stackArray[head() + 1];
-//            } else {
-//                return 0;
-//            }
-//        }
-//
-//        public int last() {
-//            return stackArray[head()];
-//        }
-//
-//        public int max() {
-//            return last();
-//        }
-//
-//        public void push(int val) {
-//            stackArray[head() +1] = Math.max(val, last());
-//            head++;
-//        }
-//    }
 
     private static class StackWithMax {
         private Deque<Integer> maxStack = new ArrayDeque<>();
+        private Deque<Integer> values = new ArrayDeque<>();
 
         public Integer max() {
-            if (maxStack.isEmpty()) {//    private static class HardStack {
-//        private int[] stackArray;
-//        private int head = 0;
-//        private int head() {
-//            return head;
-//        }
-
+            if (maxStack.isEmpty()) {
                 return Integer.MIN_VALUE;
             }
             return maxStack.peekFirst();
@@ -89,15 +47,21 @@ public class StackWithMaxDemo {
         public Integer pop() {
             if (!maxStack.isEmpty()) {
                 maxStack.pop();
-                return 0;
+                return values.pop();
             }
-            return 0;
+            throw new RuntimeException("empty stack");
         }
 
         public void push(Integer value) {
             int max = Math.max(value, max());
             maxStack.push(max);
+            values.push(value);
+        }
+
+        public boolean isEmpty() {
+            return maxStack.isEmpty();
         }
     }
+
 
 }
